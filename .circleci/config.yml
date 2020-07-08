@@ -1,16 +1,15 @@
-# Orb 'circleci/welcome-orb@0.4.1' resolved to 'circleci/welcome-orb@0.4.1'
-version: 2
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
 jobs:
-  welcome/run:
+  build:
     docker:
-    - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
     steps:
       - checkout
-    
       - run:
-        name: greeting
-        command: echo Hello world!
-
-      - run:
-        name: print the current tyme
-        command: date
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
