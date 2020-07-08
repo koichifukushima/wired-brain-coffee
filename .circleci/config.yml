@@ -20,7 +20,7 @@ jobs:
           
       - run:
           name: build the jekyll site
-          command: build exec jekyll build
+          command: bundle exec jekyll build
           
       - run:
           name: Which bundler?
